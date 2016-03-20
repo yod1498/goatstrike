@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class EnemyController : MonoBehaviour {
 	public Enemy maulman;
 	public Enemy bowman;
 	public Enemy spearman;
+	public Text hintTxt;
 
 	// modify these variables when changing number of levels
 	// also modify GetSpawnPosition()
@@ -39,6 +41,14 @@ public class EnemyController : MonoBehaviour {
 		for (int i = 1; i <= numberOfEnemy; i++) {
 			Enemy enemy = GenerateEnemy (numberOfEnemy,orderNo[i-1], i-1, isShowHint);
 			enemies.Add (i,enemy);
+		}
+
+		//hint at the buttom of the screen
+		if (isShowHint) {
+			setHintMsg(numberOfEnemy);
+			hintTxt.enabled = true;
+		} else {
+			hintTxt.enabled = false;
 		}
 
 		return enemies;
@@ -122,6 +132,16 @@ public class EnemyController : MonoBehaviour {
 			break;
 		}
 		return maulman;
+	}
+
+	private void setHintMsg(int noOfEnemy){
+		string hintMsg = "Hint:";
+		if (noOfEnemy <= 1){
+			hintMsg = hintMsg + BattleController.hintMessage[0];
+		}else{
+			hintMsg = hintMsg + BattleController.hintMessage[1];
+		}
+		hintTxt.text = hintMsg;
 	}
 
 

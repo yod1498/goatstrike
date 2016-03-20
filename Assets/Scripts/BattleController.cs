@@ -12,6 +12,7 @@ public class BattleController : MonoBehaviour {
 	public static List<int> beatLevelScore =  new List<int>{3,6,9,15,9999};
 	public static List<int> noOfEnemyInLevel =  new List<int>{1,2,3,4,5};
 	public static List<bool> isShowHintInLevel =  new List<bool>{true,true,false,false,false};
+	public static List<string> hintMessage =  new List<string>{"press the right keys","destroy the ememy from left to right"};
 
 	public static int maxCounter = 5;
 
@@ -100,8 +101,7 @@ public class BattleController : MonoBehaviour {
 			}
 		}
 	}
-
-
+		
 	// return no of enemy in the current level
 	private static int getNoOfEnemy(int currentLevel){
 		for (int i = 0; i < beatLevelScore.Count; i++) {
