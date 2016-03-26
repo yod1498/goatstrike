@@ -19,8 +19,11 @@ public class EnemyController : MonoBehaviour {
 	public Transform[] threeEnemyPosition;//3 enemy
 	public Transform[] fourEnemyPosition;//4 enemy
 	public Transform[] fiveEnemyPosition;//5 enemy
+	public Transform[] sixEnemyPosition;//6 enemy
+	public Transform[] sevenEnemyPosition;//7 enemy
+	public Transform[] eightEnemyPosition;//8 enemy
 	// enemies's spawn position from left to right
-	private List<float> offsetSpawn = new List<float>{4.2f,3.2f,2.2f,1.2f,0f};
+	private List<float> offsetSpawn = new List<float>{7f,6f,5f,4f,3f,2f,1f,0f};
 
 	void Awake () {
 		enemyController = this;
@@ -66,7 +69,12 @@ public class EnemyController : MonoBehaviour {
 		//Add offset (enemies will be spawnned from left to right)
 		//If less enemy than the list, position its in center
 		if (numberOfEnemy < offsetSpawn.Count) {
-			sequenceNo++;
+			if ((offsetSpawn.Count - numberOfEnemy) > 3) {
+				//1-4 enemy need to move to center
+				sequenceNo = sequenceNo + 3;
+			} else {
+				sequenceNo++;
+			}
 		}
 
 		float offset = offsetSpawn [sequenceNo];
@@ -99,6 +107,15 @@ public class EnemyController : MonoBehaviour {
 			break;
 		case 5:
 			spawnPosition = fiveEnemyPosition [orderNo];
+			break;
+		case 6:
+			spawnPosition = sixEnemyPosition [orderNo];
+			break;
+		case 7:
+			spawnPosition = sevenEnemyPosition [orderNo];
+			break;
+		case 8:
+			spawnPosition = eightEnemyPosition [orderNo];
 			break;
 		default:
 			spawnPosition = oneEnemyPosition [orderNo];
@@ -135,7 +152,7 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	private void setHintMsg(int noOfEnemy){
-		string hintMsg = "Hint:";
+		string hintMsg = "Hint: ";
 		if (noOfEnemy <= 1){
 			hintMsg = hintMsg + BattleController.hintMessage[0];
 		}else{

@@ -1,8 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour {
+
+	public GameObject creditPanel;
+
+	void Awake(){
+//		creditPanel = GameObject.Find ("CreditPanel");
+		creditPanel.SetActive (false);
+	}
    
 
 	public void gotoMenu(){
@@ -28,4 +36,8 @@ public class SceneController : MonoBehaviour {
     public static void gotoGame(){
 		SceneManager.LoadScene("Level1");
     }
+
+	public void showCredit(){
+		creditPanel.SetActive (true);
+	}
 }
