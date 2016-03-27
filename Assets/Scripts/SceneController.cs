@@ -8,8 +8,9 @@ public class SceneController : MonoBehaviour {
 	public GameObject creditPanel;
 
 	void Awake(){
-//		creditPanel = GameObject.Find ("CreditPanel");
-		creditPanel.SetActive (false);
+		if (creditPanel != null){
+			creditPanel.SetActive (false);
+		}
 	}
    
 

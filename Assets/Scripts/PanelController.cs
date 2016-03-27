@@ -5,8 +5,16 @@ public class PanelController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.anyKeyDown == true || Input.GetMouseButtonDown (0)) {
-			gameObject.SetActive (false);
+		if (Input.anyKeyDown == true) {
+			showPanel ();
 		}
+	}
+
+	void OnMouseDown(){
+		showPanel ();
+	}
+		
+	void showPanel(){
+		gameObject.SetActive (false);
 	}
 }
