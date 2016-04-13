@@ -54,7 +54,7 @@ public class EnemyController : MonoBehaviour {
 			enemies.Add (i,enemy);
 		}
 
-		//hint at the buttom of the screen
+		//show hint for tutorial
 		if (isShowHint) {
 
 			switch (level) {
