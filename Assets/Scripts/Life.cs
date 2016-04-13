@@ -5,15 +5,29 @@ using UnityEngine.UI;
 public class Life : MonoBehaviour {
 	private const int MAX_LIFE = 9;
 
-	static public int lifeRemain = 0;
+	public static int lifeRemain = 3;
 
 	public Text lifeRemainTxt;
 
-	// Use this for initialization
-	void Start () {
-		//initial life
-		lifeRemain = 0;
+	void Awake() {
+		// If the GoatStrikeLifeRemain already exists, read it 
+		if (PlayerPrefs.HasKey ("GoatStrikeLifeRemain")) {
+			lifeRemain = PlayerPrefs.GetInt ("GoatStrikeLifeRemain"); 
+		}
+		// Assign the lifeRemain to GoatStrikeLifeRemain 
+		PlayerPrefs.SetInt ("GoatStrikeLifeReamin", lifeRemain);
 	}
+
+//	// Use this for initialization
+//	void Start () {
+//		//initial life
+//		lifeRemain = 3;
+//
+//		// Update GoatStrikeHighScore in PlayerPrefs if necessary 
+//		if (highScore > PlayerPrefs.GetInt ("GoatStrikeHighScore")) {
+//			PlayerPrefs.SetInt ("GoatStrikeHighScore", highScore);
+//		}
+//	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,6 +39,8 @@ public class Life : MonoBehaviour {
 			return;
 		
 		lifeRemain = lifeRemain + life;
+
+		SyncLifeRemainToPref (lifeRemain);
 	}
 
 	public static int DeCreaseLife (int life){
@@ -33,10 +49,17 @@ public class Life : MonoBehaviour {
 		
 		lifeRemain = lifeRemain - life;
 
+		SyncLifeRemainToPref (lifeRemain);
+
 		return lifeRemain;
 	}
 
 	public static void ResetLife (){
 		lifeRemain = 0;
+	}
+
+	private static void SyncLifeRemainToPref(int lifeRemain){
+		// Update GoatStrikeHighScore in PlayerPrefs 
+		PlayerPrefs.SetInt ("GoatStrikeLifeRemain", lifeRemain);
 	}
 }
