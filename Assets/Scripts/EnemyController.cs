@@ -11,6 +11,9 @@ public class EnemyController : MonoBehaviour {
 	public Enemy bowman;
 	public Enemy spearman;
 	public Text hintTxt;
+	public Text hintWhite;
+	public Text hintBrown;
+	public Text hintBlack;
 
 	// modify these variables when changing number of levels
 	// also modify GetSpawnPosition()
@@ -31,10 +34,11 @@ public class EnemyController : MonoBehaviour {
 
 	void Awake () {
 		enemyController = this;
+		setHintVisibility (false);
 	}
 
 	// Generate enemy type and location
-	public Dictionary<int, Enemy> SpawnEnemy(int numberOfEnemy, bool isShowHint){
+	public Dictionary<int, Enemy> SpawnEnemy(int numberOfEnemy, bool isShowHint, int level){
 
 		Dictionary<int, Enemy> enemies = new Dictionary<int, Enemy>();
 
@@ -46,16 +50,41 @@ public class EnemyController : MonoBehaviour {
 		orderNo = RandomOrderNo (orderNo);
 
 		for (int i = 1; i <= numberOfEnemy; i++) {
-			Enemy enemy = GenerateEnemy (numberOfEnemy,orderNo[i-1], i-1, isShowHint);
+			Enemy enemy = GenerateEnemy (numberOfEnemy,orderNo[i-1], i-1, isShowHint, level);
 			enemies.Add (i,enemy);
 		}
 
 		//hint at the buttom of the screen
 		if (isShowHint) {
-			setHintMsg(numberOfEnemy);
-			hintTxt.enabled = true;
+
+			switch (level) {
+			case 1:
+				hintWhite.enabled = true;
+				break;
+			case 2:
+				hintBrown.enabled = true;
+				break;
+			case 3:
+				hintBlack.enabled = true;
+				break;
+			case 4:
+				setHintMsg(numberOfEnemy);
+				hintTxt.enabled = true;
+				break;
+			case 5:
+				setHintMsg(numberOfEnemy);
+				hintTxt.enabled = true;
+				break;
+			case 6:
+				setHintMsg(numberOfEnemy);
+				hintTxt.enabled = true;
+				break;
+			default:
+				break;
+			}
+
 		} else {
-			hintTxt.enabled = false;
+			setHintVisibility (false);
 		}
 
 		return enemies;
@@ -65,7 +94,7 @@ public class EnemyController : MonoBehaviour {
 	// numberOfEnemy = number of all enemy 
 	// orderNo = position for spawning (random from spawnpostion gameobject - 1 to 3 positions depending on noOfEnemy)
 	// squenceNo =  enemies will be spawnned from left to right
-	Enemy GenerateEnemy(int numberOfEnemy, int orderNo, int sequenceNo, bool isShowHint){
+	Enemy GenerateEnemy(int numberOfEnemy, int orderNo, int sequenceNo, bool isShowHint, int level){
 		int keyCodeRepeat = 1;
 
 		Transform spawnPosition = GetSpawnPosition (numberOfEnemy,orderNo);
@@ -87,7 +116,7 @@ public class EnemyController : MonoBehaviour {
 		float offset = offsetSpawn [sequenceNo];
 		Vector2 offsetSpawnPosition = new Vector2 (spawnPosition.position.x - offset,spawnPosition.position.y);
 
-		Enemy enemy = (Enemy) Instantiate (RandomEnemy(), offsetSpawnPosition, spawnPosition.rotation);
+		Enemy enemy = (Enemy) Instantiate (RandomEnemy(level), offsetSpawnPosition, spawnPosition.rotation);
 		enemy.KeyCodeRepeat = keyCodeRepeat;
 		enemy.isShowHint (isShowHint);
 		return enemy;
@@ -149,17 +178,26 @@ public class EnemyController : MonoBehaviour {
 		return orderNo;
 	}
 
-	Enemy RandomEnemy(){
-		int enemyNo = Random.Range (1,4);
-		switch (enemyNo) {
-		case 1:
+	//level 1 to 3 (tutorial) - no random
+	Enemy RandomEnemy(int level){
+		if (level == 1) {
 			return maulman;
-		case 2:
+		} else if (level == 2) {
 			return bowman;
-		case 3:
+		} else if (level == 3) {
 			return spearman;
-		default:
-			break;
+		} else {
+			int enemyNo = Random.Range (1, 4);
+			switch (enemyNo) {
+			case 1:
+				return maulman;
+			case 2:
+				return bowman;
+			case 3:
+				return spearman;
+			default:
+				break;
+			}
 		}
 		return maulman;
 	}
@@ -167,12 +205,17 @@ public class EnemyController : MonoBehaviour {
 	private void setHintMsg(int noOfEnemy){
 		string hintMsg = "Hint: ";
 		if (noOfEnemy <= 1){
-			hintMsg = hintMsg + BattleController.hintMessage[0];
+			hintMsg = BattleController.hintMessage[0];
 		}else{
-			hintMsg = hintMsg + BattleController.hintMessage[1];
+			hintMsg = BattleController.hintMessage[1];
 		}
 		hintTxt.text = hintMsg;
 	}
 
-
+	public void setHintVisibility(bool isVisible){
+		hintWhite.enabled = isVisible;
+		hintBrown.enabled = isVisible;
+		hintBlack.enabled = isVisible;
+		hintTxt.enabled = isVisible;
+	}
 }

@@ -12,7 +12,7 @@ public class BattleController : MonoBehaviour {
 	public static List<int> beatLevelScore =  new List<int>{3,6,9,15,20,25,30,35,40,9999};
 	public static List<int> noOfEnemyInLevel =  new List<int>{1,2,3,4,5,6,7,8,9,10};
 	public static List<bool> isShowHintInLevel =  new List<bool>{true,true,false,false,false,false,false,false,false,false};
-	public static List<string> hintMessage =  new List<string>{"press the right keys","destroy the ememy from left to right"};
+	public static List<string> hintMessage =  new List<string>{"press the right keys","Destroy the ememy from left to right"};
 
 	public static int maxCounter = 5;
 
@@ -27,6 +27,7 @@ public class BattleController : MonoBehaviour {
 	public Image timeImg5;
 	public Button startButton;
 	public static int levelToLoadFromDeath = 0;
+	public EnemyController enemyController;
 
 
 	//private GameObject[] enemyPrefab;
@@ -99,7 +100,7 @@ public class BattleController : MonoBehaviour {
 	private static void setUpEnemies(){
 		_noOfEnemyInBattle = getNoOfEnemy(currentLevel);
 		bool showHint = isShowHintInLevel [_noOfEnemyInBattle - 1];
-		Dictionary<int, Enemy> enemies = EnemyController.enemyController.SpawnEnemy (_noOfEnemyInBattle, showHint);
+		Dictionary<int, Enemy> enemies = EnemyController.enemyController.SpawnEnemy (_noOfEnemyInBattle, showHint,currentLevel);
 		int noOfEnemy = enemies.Count;
 		_enemies = new Enemy[noOfEnemy];
 
@@ -244,6 +245,7 @@ public class BattleController : MonoBehaviour {
 	}
 		
 	void DoWin(){
+		enemyController.setHintVisibility (false);
 		Score.PassLevel (currentLevel);
 		destroyEnemies ();
 		isBattleFinish = true;
