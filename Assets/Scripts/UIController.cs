@@ -4,15 +4,20 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour {
 
-	public string LevelName = "";
+	public string levelName = "";
+	public GameObject adsPanel;
 
 	public void LoadScene () {
 		BattleController.levelToLoadFromDeath = 0;
-		SceneManager.LoadScene(LevelName);
+		SceneManager.LoadScene(levelName);
 	}
 
 	public void LoadCurrentLevel(){
-		BattleController.levelToLoadFromDeath = BattleController.CurrentLevel;
-		SceneManager.LoadScene(LevelName);
+		if (Life.DeCreaseLife (1) >= 0) {
+			BattleController.levelToLoadFromDeath = BattleController.CurrentLevel;
+			SceneManager.LoadScene (levelName);
+		} else {
+			adsPanel.SetActive (true);
+		}
 	}
 }
