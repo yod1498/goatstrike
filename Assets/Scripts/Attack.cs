@@ -22,10 +22,23 @@ public class Attack : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(key)){
-			PlaySoundEffect (attackSFX);
-			animator.SetTrigger("Attack");
+			PlayAnimation ();
 		}
 
+	}
+
+	// press button from UI
+	public void AttackFromUI(){
+		if (BattleController.IsBattleFinish){
+			return;
+		}
+
+		PlayAnimation ();
+	}
+
+	void PlayAnimation(){			
+		PlaySoundEffect (attackSFX);
+		animator.SetTrigger("Attack");
 	}
 
 	void PlaySoundEffect(AudioClip audioClip){

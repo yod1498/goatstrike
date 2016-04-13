@@ -342,7 +342,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1136, y: 640}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2097,7 +2097,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.2
+  orthographic size: 4.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2306,7 +2306,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 808.8, y: 97.5}
+  m_SizeDelta: {x: 1136, y: 81}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &2016626936
 MonoBehaviour:
@@ -2319,6 +2319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f186ebd633b94b709f86a2a86e22306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creditPanel: {fileID: 0}
 --- !u!114 &2016626937
 MonoBehaviour:
   m_ObjectHideFlags: 0

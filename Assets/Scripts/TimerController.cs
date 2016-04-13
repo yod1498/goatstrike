@@ -38,6 +38,21 @@ public class TimerController : MonoBehaviour {
 		}
 	}
 
+	// input from screen
+	public void AddPressedKeyA(){
+		AddPressedKey (key1);
+	}
+
+	// input from screen
+	public void AddPressedKeyB(){
+		AddPressedKey (key2);
+	}
+
+	// input from screen
+	public void AddPressedKeyC(){
+		AddPressedKey (key3);
+	}
+
 	public static void StartTimer(){
 		if (isTimerStarted)
 			return;

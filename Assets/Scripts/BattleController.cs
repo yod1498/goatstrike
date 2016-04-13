@@ -26,6 +26,8 @@ public class BattleController : MonoBehaviour {
 	public Image timeImg4;
 	public Image timeImg5;
 	public Button startButton;
+	public static int levelToLoadFromDeath = 0;
+
 
 	//private GameObject[] enemyPrefab;
 	private static bool isBattleFinish;
@@ -37,8 +39,13 @@ public class BattleController : MonoBehaviour {
 
     void Awake()
     {
-        //counterTxt.enabled = false;
-		ResetLevel();
+		// restart level from current level or level 1
+		if (levelToLoadFromDeath > 0) {
+			RestartLevelFromCurrentLevel ();
+		} else {
+			ResetLevel();
+		}
+		
 		startButton.gameObject.SetActive (true);
 		isBattleFinish = true;
 		readyTxt.enabled = false;
@@ -76,6 +83,10 @@ public class BattleController : MonoBehaviour {
 
 	public static bool IsBattleFinish {
 		get { return isBattleFinish; }
+	}
+
+	public static int CurrentLevel{
+		get { return currentLevel; }
 	}
 
 	private static void BeginBattle(){
@@ -255,10 +266,18 @@ public class BattleController : MonoBehaviour {
 		SceneManager.LoadScene(levelName);
 	}
 
+	// restart from level 1
 	void ResetLevel(){
 		currentLevel = 1;
 		Score.ResetScore ();
 		levelTxt.text = "LV : " + currentLevel;		
+	}
+
+	// restart from current level
+	void RestartLevelFromCurrentLevel(){
+		currentLevel = levelToLoadFromDeath;
+		//Score.ResetScore ();
+		levelTxt.text = "LV : " + currentLevel;	
 	}
 
 	void LeveUp(){
