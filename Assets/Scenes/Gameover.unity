@@ -1105,7 +1105,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: View video ads and play again?
+  m_Text: View video ads and earn 3 credits?
 --- !u!222 &634276680
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1816,7 +1816,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Invite friends on Facebook\n and play again?"
+  m_Text: "Invite friends on Facebook\n and earn 3 credits?"
 --- !u!222 &869935842
 CanvasRenderer:
   m_ObjectHideFlags: 0
