@@ -57,6 +57,7 @@ public class Life : MonoBehaviour {
 
 	public static void ResetLife (){
 		lifeRemain = DEFAULT_LIFE;
+		SyncLifeRemainToPref (lifeRemain);
 	}
 
 	private static void SyncLifeRemainToPref(int lifeRemain){

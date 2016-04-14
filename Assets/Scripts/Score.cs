@@ -12,7 +12,11 @@ public class Score : MonoBehaviour {
 	public Text scoreTxt;
 	public Text highScoreTxt;
 
+	static public bool isNewHighScore = false;
+
 	void Awake() {
+		isNewHighScore = false;
+
 		// If the GoatStrikeHighScore already exists, read it 
 		if (PlayerPrefs.HasKey ("GoatStrikeHighScore")) {
 			highScore = PlayerPrefs.GetInt ("GoatStrikeHighScore"); 
@@ -28,6 +32,7 @@ public class Score : MonoBehaviour {
 
 		if (currentScore > highScore) {
 			highScore = currentScore;
+			isNewHighScore = true;
 		}
 
 		// Update GoatStrikeHighScore in PlayerPrefs if necessary 

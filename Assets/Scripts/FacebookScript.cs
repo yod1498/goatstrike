@@ -9,6 +9,7 @@ public class FacebookScript : MonoBehaviour {
 	public GameObject facebookPanel;
 	public GameObject faceboookNotReadyPanel;
 	public GameObject adsPanel;
+	public GameObject facebookSharePanel;
 
 	private enum InviteFriendStatus {notyet, shared, cancelled};
 	int userInviteFriendStatus = (int) InviteFriendStatus.notyet;
@@ -49,6 +50,13 @@ public class FacebookScript : MonoBehaviour {
 	public void closePanel (){
 		facebookPanel.SetActive (false);
 		faceboookNotReadyPanel.SetActive (false);
+	}
+
+	public void CallFBShare(){
+		string title = "Goat Strike : High Score";
+		string description = "My new high score is " + Score.currentScore + ". Beat me if you can!";
+		Uri photo = null; //new Uri ("https://developers.facebook.com/");
+		FB.ShareLink(new Uri("https://developers.facebook.com/"),title,description,photo,callback: ShareCallback);
 	}
 
 
@@ -113,7 +121,6 @@ public class FacebookScript : MonoBehaviour {
 		{
 //			this.LastResponse = "Null Response\n";
 //			LogView.AddLog(this.LastResponse);
-//			Debug.Log ("FB Log = 1");
 			closePanel ();
 			faceboookNotReadyPanel.SetActive (true);
 			return;
@@ -127,7 +134,6 @@ public class FacebookScript : MonoBehaviour {
 //			this.Status = "Error - Check log for details";
 //			this.LastResponse = "Error Response:\n" + result.Error;
 //			LogView.AddLog(result.Error);
-//			Debug.Log ("FB Log = 2");
 			closePanel ();
 			faceboookNotReadyPanel.SetActive (true);
 		}
@@ -136,7 +142,6 @@ public class FacebookScript : MonoBehaviour {
 //			this.Status = "Cancelled - Check log for details";
 //			this.LastResponse = "Cancelled Response:\n" + result.RawResult;
 //			LogView.AddLog(result.RawResult);
-//			Debug.Log ("FB Log = 3");
 			closePanel ();
 			faceboookNotReadyPanel.SetActive (true);
 		}
@@ -145,19 +150,34 @@ public class FacebookScript : MonoBehaviour {
 //			this.Status = "Success - Check log for details";
 //			this.LastResponse = "Success Response:\n" + result.RawResult;
 //			LogView.AddLog(result.RawResult);
-//			Debug.Log ("FB Log = 4");
 			PlayerPrefs.SetInt ("GoatStrikeInviteFriendStatus", (int) InviteFriendStatus.shared);
-			Life.InCreaseLife (3);
+			Life.InCreaseLife (2);
 			closePanel ();
 		}
 		else
 		{
 //			this.LastResponse = "Empty Response\n";
 //			LogView.AddLog(this.LastResponse);
-//			Debug.Log ("FB Log = 5");
 			closePanel ();
 			faceboookNotReadyPanel.SetActive (true);
 		}
 	}
 
+	private void ShareCallback (IShareResult result) {
+		if (result.Cancelled || !String.IsNullOrEmpty(result.Error)) {
+			Debug.Log("ShareLink Error: "+result.Error);
+			facebookSharePanel.SetActive (false);
+		} else if (!String.IsNullOrEmpty(result.PostId)) {
+			// Print post identifier of the shared content
+			Debug.Log(result.PostId);
+			facebookSharePanel.SetActive (false);
+		} else {
+			// Share succeeded without postID
+			Debug.Log("ShareLink success!");
+			Life.InCreaseLife (1);
+			facebookSharePanel.SetActive (false);
+		}
+	}
+
 }
+
