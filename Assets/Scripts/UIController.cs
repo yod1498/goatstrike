@@ -21,9 +21,10 @@ public class UIController : MonoBehaviour {
 		PlayerPrefs.SetInt ("GoatStrikeInviteFriendStatus", userInviteFriendStatus);
 	}
 
-	public void LoadScene () {
+	public void LoadMenuScene () {
 		BattleController.levelToLoadFromDeath = 0;
 		Life.ResetLife ();
+		PlayerPrefs.SetInt ("GoatStrikeInviteFriendStatus", (int) InviteFriendStatus.notyet);
 		SceneManager.LoadScene(levelName);
 	}
 
