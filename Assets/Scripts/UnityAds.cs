@@ -44,9 +44,13 @@ public class UnityAds : MonoBehaviour
 			break;
 		case ShowResult.Skipped:
 			Debug.Log("The ad was skipped before reaching the end.");
+			closePanel ();
+			adsNotReadyPanel.SetActive (true);
 			break;
 		case ShowResult.Failed:
 			Debug.LogError("The ad failed to be shown.");
+			closePanel ();
+			adsNotReadyPanel.SetActive (true);
 			break;
 		}
 	}
