@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 public class Life : MonoBehaviour {
 	private const int MAX_LIFE = 9;
+	private const int DEFAULT_LIFE = 3;
 
-	public static int lifeRemain = 3;
+	public static int lifeRemain = DEFAULT_LIFE;
 
 	public Text lifeRemainTxt;
 
@@ -55,7 +56,7 @@ public class Life : MonoBehaviour {
 	}
 
 	public static void ResetLife (){
-		lifeRemain = 0;
+		lifeRemain = DEFAULT_LIFE;
 	}
 
 	private static void SyncLifeRemainToPref(int lifeRemain){

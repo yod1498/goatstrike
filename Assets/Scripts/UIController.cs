@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour {
 
 	public void LoadScene () {
 		BattleController.levelToLoadFromDeath = 0;
+		Life.ResetLife ();
 		SceneManager.LoadScene(levelName);
 	}
 
