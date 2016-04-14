@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
+using System.Collections.Generic;
 
 public class UnityAds : MonoBehaviour
 {
@@ -32,6 +34,11 @@ public class UnityAds : MonoBehaviour
 		{
 		case ShowResult.Finished:
 			Debug.Log ("The ad was successfully shown.");
+			Analytics.CustomEvent("ShowAds", new Dictionary<string, object>
+				{
+					{ "highScore", Score.highScore },
+					{ "level", BattleController.CurrentLevel }
+				});
 			Life.InCreaseLife (3);
 			closePanel ();
 			break;

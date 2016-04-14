@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
+using System.Collections.Generic;
+
 
 public class Score : MonoBehaviour {
 	static public int highScore = 0;
@@ -30,6 +33,11 @@ public class Score : MonoBehaviour {
 		// Update GoatStrikeHighScore in PlayerPrefs if necessary 
 		if (highScore > PlayerPrefs.GetInt ("GoatStrikeHighScore")) {
 			PlayerPrefs.SetInt ("GoatStrikeHighScore", highScore);
+			Analytics.CustomEvent("HighScore", new Dictionary<string, object>
+				{
+					{ "highScore", highScore },
+					{ "level", BattleController.CurrentLevel }
+				});
 		}
 	}
 
