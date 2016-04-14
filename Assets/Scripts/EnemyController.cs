@@ -28,9 +28,17 @@ public class EnemyController : MonoBehaviour {
 	public Transform[] nineEnemyPosition;//9 enemy
 	public Transform[] tenEnemyPosition;//10 enemy
 	// offset (X axis) for enemies's spawn  position (enemy will be placed from left to right)
-	private List<float> offsetSpawn = new List<float>{8.1f,7.2f,6.3f,5.4f,4.5f,3.6f,2.7f,1.8f,0.9f,0f};
-	private int offsetOneEnemy = 5;
-	private int offsetTwoEnemy = 5;
+	//private List<float> offsetSpawn = new List<float>{8.1f,7.2f,6.3f,5.4f,4.5f,3.6f,2.7f,1.8f,0.9f,0f};
+	private List<float> offsetSpawnOneEnemy = new List<float>{3.6f};
+	private List<float> offsetSpawnTwoEnemy = new List<float>{4.5f,2.7f};
+	private List<float> offsetSpawnThreeEnemy = new List<float>{4.5f,2.7f,0.9f};
+	private List<float> offsetSpawnFourEnemy = new List<float>{5f,3.5f,2f,0.5f};
+	private List<float> offsetSpawnFiveEnemy = new List<float>{6.5f,5f,3.5f,2f,0.5f};
+	private List<float> offsetSpawnSixEnemy = new List<float>{7.5f,6f,4.5f,3f,1.5f,0f};
+	private List<float> offsetSpawnSevenEnemy = new List<float>{7.8f,6.5f,5.2f,3.9f,2.6f,1.3f,0f};
+	private List<float> offsetSpawnEightEnemy = new List<float>{7.7f,6.6f,5.5f,4.4f,3.3f,2.2f,1.1f,0f};
+	private List<float> offsetSpawnNineEnemy = new List<float>{8f,7f,6f,5f,4f,3f,2f,1f,0f};
+	private List<float> offsetSpawnTenEnemy = new List<float>{8.1f,7.2f,6.3f,5.4f,4.5f,3.6f,2.7f,1.8f,0.9f,0f};
 
 	void Awake () {
 		enemyController = this;
@@ -101,19 +109,56 @@ public class EnemyController : MonoBehaviour {
 
 		//Add offset (enemies will be spawnned from left to right)
 		//If less enemy than the list, try to position enemy in the center
-		if (numberOfEnemy < offsetSpawn.Count) {
-			if ((offsetSpawn.Count - numberOfEnemy) >= 5) {
-				//1-5 enemies need to move to center
-				sequenceNo = sequenceNo + 5;
-			}else if ((offsetSpawn.Count - numberOfEnemy) < 5) {
-				//>6 enemies need to move from right to left
-				sequenceNo = sequenceNo + (offsetSpawn.Count - numberOfEnemy);
-			} else {
-				sequenceNo++;
-			}
+//		if (numberOfEnemy < offsetSpawn.Count) {
+//			if ((offsetSpawn.Count - numberOfEnemy) >= 5) {
+//				//1-5 enemies need to move to center
+//				sequenceNo = sequenceNo + 5;
+//			}else if ((offsetSpawn.Count - numberOfEnemy) < 5) {
+//				//>6 enemies need to move from right to left
+//				sequenceNo = sequenceNo + (offsetSpawn.Count - numberOfEnemy);
+//			} else {
+//				sequenceNo++;
+//			}
+//		}
+
+		float offset = 0;
+
+		switch (numberOfEnemy) {
+		case 1:
+			offset = offsetSpawnOneEnemy [sequenceNo];
+			break;
+		case 2:
+			offset = offsetSpawnTwoEnemy [sequenceNo];
+			break;
+		case 3:
+			offset = offsetSpawnThreeEnemy [sequenceNo];
+			break;
+		case 4:
+			offset = offsetSpawnFourEnemy [sequenceNo];
+			break;
+		case 5:
+			offset = offsetSpawnFiveEnemy [sequenceNo];
+			break;
+		case 6:
+			offset = offsetSpawnSixEnemy [sequenceNo];
+			break;
+		case 7:
+			offset = offsetSpawnSevenEnemy [sequenceNo];
+			break;
+		case 8:
+			offset = offsetSpawnEightEnemy [sequenceNo];
+			break;
+		case 9:
+			offset = offsetSpawnNineEnemy [sequenceNo];
+			break;
+		case 10:
+			offset = offsetSpawnTenEnemy [sequenceNo];
+			break;
+		default:
+			break;
 		}
 
-		float offset = offsetSpawn [sequenceNo];
+		//float offset = offsetSpawn [sequenceNo];
 		Vector2 offsetSpawnPosition = new Vector2 (spawnPosition.position.x - offset,spawnPosition.position.y);
 
 		Enemy enemy = (Enemy) Instantiate (RandomEnemy(level), offsetSpawnPosition, spawnPosition.rotation);
