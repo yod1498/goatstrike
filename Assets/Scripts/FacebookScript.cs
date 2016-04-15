@@ -10,6 +10,7 @@ public class FacebookScript : MonoBehaviour {
 	public GameObject faceboookNotReadyPanel;
 	public GameObject adsPanel;
 	public GameObject facebookSharePanel;
+	public GameObject facebookShareLevelUpPanel;
 
 	private enum InviteFriendStatus {notyet, shared, cancelled};
 	int userInviteFriendStatus = (int) InviteFriendStatus.notyet;
@@ -57,6 +58,13 @@ public class FacebookScript : MonoBehaviour {
 		string description = "My new high score is " + Score.currentScore + ". Beat me if you can!";
 		Uri photo = null; //new Uri ("https://developers.facebook.com/");
 		FB.ShareLink(new Uri("https://developers.facebook.com/"),title,description,photo,callback: ShareCallback);
+	}
+
+	public void CallFBShareAchievement(){
+		string title = "Goat Strike : Achievement";
+		string description = "Unlock level " + BattleController.CurrentLevel + ". Beat me if you can!";
+		Uri photo = null; //new Uri ("https://developers.facebook.com/");
+		FB.ShareLink(new Uri("https://developers.facebook.com/"),title,description,photo,callback: ShareAchievementCallback);
 	}
 
 
@@ -165,17 +173,33 @@ public class FacebookScript : MonoBehaviour {
 
 	private void ShareCallback (IShareResult result) {
 		if (result.Cancelled || !String.IsNullOrEmpty(result.Error)) {
-			Debug.Log("ShareLink Error: "+result.Error);
+			//Debug.Log("ShareLink Error: "+result.Error);
 			facebookSharePanel.SetActive (false);
 		} else if (!String.IsNullOrEmpty(result.PostId)) {
 			// Print post identifier of the shared content
-			Debug.Log(result.PostId);
+			//Debug.Log(result.PostId);
 			facebookSharePanel.SetActive (false);
 		} else {
 			// Share succeeded without postID
-			Debug.Log("ShareLink success!");
+			//Debug.Log("ShareLink success!");
 			Life.InCreaseLife (1);
 			facebookSharePanel.SetActive (false);
+		}
+	}
+
+	private void ShareAchievementCallback (IShareResult result) {
+		if (result.Cancelled || !String.IsNullOrEmpty(result.Error)) {
+			//Debug.Log("ShareLink Error: "+result.Error);
+			facebookShareLevelUpPanel.SetActive (false);
+		} else if (!String.IsNullOrEmpty(result.PostId)) {
+			// Print post identifier of the shared content
+			//Debug.Log(result.PostId);
+			facebookShareLevelUpPanel.SetActive (false);
+		} else {
+			// Share succeeded without postID
+			//Debug.Log("ShareLink success!");
+			Life.InCreaseLife (2);
+			facebookShareLevelUpPanel.SetActive (false);
 		}
 	}
 

@@ -8,11 +8,10 @@ using System.Collections.Generic;
 public class Score : MonoBehaviour {
 	static public int highScore = 0;
 	static public int currentScore = 0;
+	static public bool isNewHighScore = false;
 
 	public Text scoreTxt;
 	public Text highScoreTxt;
-
-	static public bool isNewHighScore = false;
 
 	void Awake() {
 		isNewHighScore = false;
