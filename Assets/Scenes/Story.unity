@@ -1922,7 +1922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9264706, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1931,7 +1931,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 26
+    m_FontSize: 38
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1960,8 +1960,8 @@ MonoBehaviour:
   m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.8088235, g: 0.04757785, b: 0.04757785, a: 0.5}
-  m_EffectDistance: {x: 2.09, y: -1.11}
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
 --- !u!1 &1657147856
 GameObject:
@@ -2049,6 +2049,7 @@ GameObject:
   - 124: {fileID: 1830837643}
   - 81: {fileID: 1830837642}
   - 82: {fileID: 1830837647}
+  - 114: {fileID: 1830837648}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2197,6 +2198,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1830837648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1830837641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f9d1ff52a154c44afbb357a0b40451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScreenWidth: 1136
+  targetScreenHeight: 640
 --- !u!1 &1835036480
 GameObject:
   m_ObjectHideFlags: 0

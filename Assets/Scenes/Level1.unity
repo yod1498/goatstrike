@@ -348,7 +348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &58175645
 Transform:
   m_ObjectHideFlags: 0
@@ -5045,6 +5045,7 @@ GameObject:
   - 124: {fileID: 2058589316}
   - 81: {fileID: 2058589315}
   - 82: {fileID: 2058589320}
+  - 114: {fileID: 2058589321}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5093,7 +5094,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.5
+  orthographic size: 4.500762
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5194,6 +5195,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &2058589321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2058589314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f9d1ff52a154c44afbb357a0b40451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetAspect: 1.7777778
 --- !u!1 &2090377174
 GameObject:
   m_ObjectHideFlags: 0

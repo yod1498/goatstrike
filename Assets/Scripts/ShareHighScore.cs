@@ -10,11 +10,11 @@ public class ShareHighScore : MonoBehaviour {
 	public int currentLevelShared = 0;
 
 	void Awake() {
-		// If the GoatStrikeHighScore already exists, read it 
+		// If the GoatStrikeHighLevel already exists, read it 
 		if (PlayerPrefs.HasKey ("GoatStrikeHighLevel")) {
 			currentLevelShared = PlayerPrefs.GetInt ("GoatStrikeHighLevel"); 
 		}
-		// Assign the high score to GoatStrikeHighScore 
+		// Assign the currentLevelShared to GoatStrikeHighLevel 
 		PlayerPrefs.SetInt ("GoatStrikeHighLevel", currentLevelShared);
 	}
 

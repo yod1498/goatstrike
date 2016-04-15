@@ -9,6 +9,7 @@ public class BattleController : MonoBehaviour {
 	private const string ENEMY_TAG = "Enemy";
 
 	// modify these variables when changing number of levels
+	// number of enemy in each level e.g. level 1-3 enemy = 1, level 4-6 enemy = 2  
 	public static List<int> beatLevelScore =  new List<int>{3,6,9,15,20,25,30,35,40,9999};
 	public static List<int> noOfEnemyInLevel =  new List<int>{1,2,3,4,5,6,7,8,9,10};
 	public static List<bool> isShowHintInLevel =  new List<bool>{true,true,false,false,false,false,false,false,false,false};

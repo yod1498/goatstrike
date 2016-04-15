@@ -344,11 +344,11 @@ RectTransform:
   - {fileID: 1324868623}
   m_Father: {fileID: 992330975}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: 279, y: 101}
-  m_Pivot: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -15.8, y: -268.51}
+  m_SizeDelta: {x: 204.2, y: 58}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &33635465
 Animator:
   serializedVersion: 3
@@ -2139,6 +2139,7 @@ GameObject:
   - 82: {fileID: 890123451}
   - 114: {fileID: 890123452}
   - 114: {fileID: 890123453}
+  - 114: {fileID: 890123454}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2313,6 +2314,19 @@ MonoBehaviour:
   facebookSharePanel: {fileID: 1978498305}
   facebookShareLevelUpPanel: {fileID: 1877898054}
   currentLevelShared: 0
+--- !u!114 &890123454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890123445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f9d1ff52a154c44afbb357a0b40451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScreenWidth: 1136
+  targetScreenHeight: 640
 --- !u!1 &974814309
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,7 +2876,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9, y: 14}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 175, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1324868624
