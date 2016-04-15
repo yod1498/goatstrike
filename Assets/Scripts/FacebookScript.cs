@@ -6,6 +6,11 @@ using System;
 
 public class FacebookScript : MonoBehaviour {
 
+	private const string IMAGE_FOR_FB = "http://www.imi.co.th/apps/goatstrike/GoatStrikeFB.jpg";
+	private const string LINK_FOR_FB =	"http://www.imi.co.th/apps/goatstrike/";
+	private const string IOS_URL = "https://fb.me/810530068992919";
+	private const string ANDROID_URL = "https://fb.me/892708710750483";
+
 	public GameObject facebookPanel;
 	public GameObject faceboookNotReadyPanel;
 	public GameObject adsPanel;
@@ -56,15 +61,15 @@ public class FacebookScript : MonoBehaviour {
 	public void CallFBShare(){
 		string title = "Goat Strike : High Score";
 		string description = "My new high score is " + Score.currentScore + ". Beat me if you can!";
-		Uri photo = null; //new Uri ("https://developers.facebook.com/");
-		FB.ShareLink(new Uri("https://developers.facebook.com/"),title,description,photo,callback: ShareCallback);
+		Uri photo = new Uri (IMAGE_FOR_FB);
+		FB.ShareLink(new Uri(LINK_FOR_FB),title,description,photo,callback: ShareCallback);
 	}
 
 	public void CallFBShareAchievement(){
 		string title = "Goat Strike : Achievement";
-		string description = "Unlock level " + BattleController.CurrentLevel + ". Beat me if you can!";
-		Uri photo = null; //new Uri ("https://developers.facebook.com/");
-		FB.ShareLink(new Uri("https://developers.facebook.com/"),title,description,photo,callback: ShareAchievementCallback);
+		string description = "Unlocked level " + BattleController.CurrentLevel + ". Beat me if you can!";
+		Uri photo = new Uri (IMAGE_FOR_FB);
+		FB.ShareLink(new Uri(LINK_FOR_FB),title,description,photo,callback: ShareAchievementCallback);
 	}
 
 
@@ -114,12 +119,14 @@ public class FacebookScript : MonoBehaviour {
 	private void CallFBInviteFriend(){
 		#if UNITY_IOS 
 			//FB.Mobile.AppInvite(new Uri("https://fb.me/810530068992919"), callback: this.HandleResult);
-			FB.Mobile.AppInvite(new Uri("https://fb.me/810530068992919"), new Uri("http://i.imgur.com/zkYlB.jpg"), this.HandleResult);
+			//FB.Mobile.AppInvite(new Uri("https://fb.me/810530068992919"), new Uri("http://www.imi.co.th/apps/goatstrike/GoatStrikeFB.jpg"), this.HandleResult);
+		FB.Mobile.AppInvite(new Uri(IOS_URL), new Uri(IMAGE_FOR_FB), this.HandleResult);
 		#endif
 
 		#if UNITY_ANDROID
 			//FB.Mobile.AppInvite(new Uri("https://fb.me/892708710750483"), callback: this.HandleResult);
-			FB.Mobile.AppInvite(new Uri("https://fb.me/892708710750483"), new Uri("http://i.imgur.com/zkYlB.jpg"), this.HandleResult);
+			//FB.Mobile.AppInvite(new Uri("https://fb.me/892708710750483"), new Uri("http://www.imi.co.th/apps/goatstrike/GoatStrikeFB.jpg"), this.HandleResult);
+		FB.Mobile.AppInvite(new Uri(ANDROID_URL), new Uri(IMAGE_FOR_FB), this.HandleResult);
 		#endif
 	}
 
