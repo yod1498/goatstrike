@@ -38,6 +38,7 @@ public class BattleController : MonoBehaviour {
 	private KeyCode startBattleKey = KeyCode.B;
 	private static int currentLevel = 1;
 	private AudioSource audioSource;
+	private int isReadytoShareAchievement = 0; //0=false, 1=true
 
     void Awake()
     {
@@ -54,8 +55,15 @@ public class BattleController : MonoBehaviour {
 		//string levelname = SceneManager.GetActiveScene ().name;
 		ResetTimeImage ();
 		audioSource = GetComponent<AudioSource> ();
-    }
 
+		// If the GoatStrikeHighLevel already exists, read it 
+		if (PlayerPrefs.HasKey ("IsReadytoShareAchievement")) {
+			isReadytoShareAchievement = PlayerPrefs.GetInt ("IsReadytoShareAchievement"); 
+		}
+		// Assign the currentLevelShared to GoatStrikeHighLevel 
+		PlayerPrefs.SetInt ("IsReadytoShareAchievement", isReadytoShareAchievement);
+    }
+		
 	void Update () {
 
 		// For testing by pressing  'B'
@@ -286,6 +294,15 @@ public class BattleController : MonoBehaviour {
 	void LeveUp(){
 		currentLevel++;
 		levelTxt.text = "LV : " + currentLevel;
+
+		// if level 10,20,30... show level up share
+		if (currentLevel % ShareHighScore.LEVEL_ACHIEVEMENT == 0) {
+			//ShareHighScore.isReadytoShareAchievement = true;
+			isReadytoShareAchievement = 1;
+
+			PlayerPrefs.SetInt ("IsReadytoShareAchievement", isReadytoShareAchievement);
+		}
+
 		NextLevel ();
 	}
 
