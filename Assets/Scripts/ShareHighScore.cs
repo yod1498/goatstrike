@@ -3,7 +3,10 @@ using System.Collections;
 
 public class ShareHighScore : MonoBehaviour {
 
-	public const int LEVEL_ACHIEVEMENT = 10;
+	// if level 10,20,30... share level up on FB	
+	public const int LEVEL_SHARE_ACHIEVEMENT = 10;
+	// if level > 10 share high score on FB	
+	public const int LEVEL_SHARE_HIGH_SCORE = 10;
 
 	public GameObject facebookSharePanel;
 	public GameObject facebookShareLevelUpPanel;
@@ -39,7 +42,7 @@ public class ShareHighScore : MonoBehaviour {
 			facebookShareLevelUpPanel.SetActive (true);
 		} else {
 			// if not level up and high score, show high score share
-			if (Score.isNewHighScore) {
+			if ((Score.isNewHighScore) && (BattleController.CurrentLevel > LEVEL_SHARE_HIGH_SCORE)) {
 				facebookSharePanel.SetActive (true);
 				Score.isNewHighScore = false;
 			}

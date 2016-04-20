@@ -42,6 +42,7 @@ public class BattleController : MonoBehaviour {
 
     void Awake()
     {
+		//PlayerPrefs.DeleteAll();
 		// restart level from current level or level 1
 		if (levelToLoadFromDeath > 0) {
 			RestartLevelFromCurrentLevel ();
@@ -296,7 +297,7 @@ public class BattleController : MonoBehaviour {
 		levelTxt.text = "LV : " + currentLevel;
 
 		// if level 10,20,30... show level up share
-		if (currentLevel % ShareHighScore.LEVEL_ACHIEVEMENT == 0) {
+		if (currentLevel % ShareHighScore.LEVEL_SHARE_ACHIEVEMENT == 0) {
 			//ShareHighScore.isReadytoShareAchievement = true;
 			isReadytoShareAchievement = 1;
 
