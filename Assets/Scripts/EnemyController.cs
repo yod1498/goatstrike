@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour {
 	public Transform[] tenEnemyPosition;//10 enemy
 	// offset (X axis) for enemies's spawn  position (enemy will be placed from left to right)
 	//private List<float> offsetSpawn = new List<float>{8.1f,7.2f,6.3f,5.4f,4.5f,3.6f,2.7f,1.8f,0.9f,0f};
-	private List<float> offsetSpawnOneEnemy = new List<float>{3.6f};
+	private List<float> offsetSpawnOneEnemy = new List<float>{1.5f};
 	private List<float> offsetSpawnTwoEnemy = new List<float>{4.5f,2.7f};
 	private List<float> offsetSpawnThreeEnemy = new List<float>{4.5f,2.7f,0.9f};
 	private List<float> offsetSpawnFourEnemy = new List<float>{5f,3.5f,2f,0.5f};

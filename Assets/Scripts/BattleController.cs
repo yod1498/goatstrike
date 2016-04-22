@@ -26,6 +26,11 @@ public class BattleController : MonoBehaviour {
 	public Image timeImg3;
 	public Image timeImg4;
 	public Image timeImg5;
+	public Text timeText1;
+	public Text timeText2;
+	public Text timeText3;
+	public Text timeText4;
+	public Text timeText5;
 	public Button startButton;
 	public static int levelToLoadFromDeath = 0;
 	public EnemyController enemyController;
@@ -161,6 +166,12 @@ public class BattleController : MonoBehaviour {
 		timeImg3.enabled = false;
 		timeImg4.enabled = false;
 		timeImg5.enabled = false;
+
+		timeText1.enabled = false;
+		timeText2.enabled = false;
+		timeText3.enabled = false;
+		timeText4.enabled = false;
+		timeText5.enabled = false;
 	}
 
 	void DisplayTimeImg(){
@@ -172,6 +183,7 @@ public class BattleController : MonoBehaviour {
 					PlaySoundEffect (timeCountingSFX);
 				}
 				timeImg5.enabled = true;
+				timeText5.enabled = true;
                 
 			break;
 		case 4:
@@ -180,6 +192,7 @@ public class BattleController : MonoBehaviour {
 				PlaySoundEffect (timeCountingSFX);
                 }
                 timeImg4.enabled = true;
+				timeText4.enabled = true;
                     
                 break;
 		case 3:
@@ -188,6 +201,7 @@ public class BattleController : MonoBehaviour {
 				PlaySoundEffect (timeCountingSFX);
                 }
                 timeImg3.enabled = true;
+				timeText3.enabled = true;
                 
                 break;
 		case 2:
@@ -196,6 +210,7 @@ public class BattleController : MonoBehaviour {
 				PlaySoundEffect (timeCountingSFX);
                 }
                 timeImg2.enabled = true;
+				timeText2.enabled = true;
                 
                 break;
 		case 1:
@@ -204,6 +219,7 @@ public class BattleController : MonoBehaviour {
 				PlaySoundEffect (timeCountingSFX);
                 }
                 timeImg1.enabled = true;
+				timeText1.enabled = true;
                 
                 break;
 		default:
