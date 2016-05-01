@@ -32,7 +32,12 @@ public class Life : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		lifeRemainTxt.text = "" + lifeRemain;
+		if (lifeRemain > 1) {
+			lifeRemainTxt.text = "(" + lifeRemain + " credits left)";
+		}else{
+			lifeRemainTxt.text = "(" + lifeRemain + " credit left)";
+		}
+
 	}
 
 	public static void InCreaseLife (int life){
@@ -43,7 +48,7 @@ public class Life : MonoBehaviour {
 
 		SyncLifeRemainToPref (lifeRemain);
 	}
-
+		
 	public static int DeCreaseLife (int life){
 		if (lifeRemain <= 0)
 			return -1;

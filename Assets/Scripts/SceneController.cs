@@ -19,6 +19,8 @@ public class SceneController : MonoBehaviour {
 	}
 
 	public void gotoStory(){
+		//reset life to default value
+		Life.ResetLife ();
 		SceneManager.LoadScene("Story");
 	}
 
