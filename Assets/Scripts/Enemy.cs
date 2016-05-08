@@ -65,21 +65,7 @@ public class Enemy : MonoBehaviour {
 
 		Transform body = gameObject.transform;
 
-//		GameObject Organ_1 = Instantiate(o1, body.position, body.rotation) as GameObject;
-//		Organ_1.GetComponent<Rigidbody2D>().velocity = body.TransformDirection(new Vector2(Random.Range(4,11), Random.Range(-4, 11)));
-//		GameObject Organ_2 = Instantiate(o2, body.position, body.rotation) as GameObject;
-//		Organ_2.GetComponent<Rigidbody2D>().velocity = body.TransformDirection(new Vector2(Random.Range(4, 11), Random.Range(-4, 11)));
-//		GameObject Organ_3 = Instantiate(o3, body.position, body.rotation) as GameObject;
-//		Organ_3.GetComponent<Rigidbody2D>().velocity = body.TransformDirection(new Vector2(Random.Range(4, 11), Random.Range(-4, 11)));
-//		GameObject Organ_4 = Instantiate(o4, body.position, body.rotation) as GameObject;
-//		Organ_4.GetComponent<Rigidbody2D>().velocity = body.TransformDirection(new Vector2(Random.Range(4, 11), Random.Range(-4, 11)));
-//		GameObject Organ_5 = Instantiate(o5, body.position, body.rotation) as GameObject;
-//		Organ_5.GetComponent<Rigidbody2D>().velocity = body.TransformDirection(new Vector2(Random.Range(4, 11), Random.Range(-4, 11)));
-//		GameObject Organ_6 = Instantiate(o6, body.position, body.rotation) as GameObject;
-//		Organ_6.GetComponent<Rigidbody2D>().velocity = body.TransformDirection(new Vector2(Random.Range(4, 11), Random.Range(-4, 11)));
-//		GameObject Organ_7 = Instantiate(o7, body.position, body.rotation) as GameObject;
-//		Organ_7.GetComponent<Rigidbody2D>().velocity = body.TransformDirection(new Vector2(Random.Range(4, 11), Random.Range(-4, 11)));
-
+		// instantiate die animation and sound effect
 		GameObject Organ_1 = Instantiate(o1, body.position, body.rotation) as GameObject;
 		Organ_1.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(4,11), Random.Range(-4, 11));
 		GameObject Organ_2 = Instantiate(o2, body.position, body.rotation) as GameObject;
@@ -95,6 +81,7 @@ public class Enemy : MonoBehaviour {
 		GameObject Organ_7 = Instantiate(o7, body.position, body.rotation) as GameObject;
 		Organ_7.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(4, 11), Random.Range(-4, 11));
 
+		// destroy enemy object and die animation
 		Destroy(particle.gameObject, particle.duration);
 		Destroy(Organ_1, particle.duration);
 		Destroy(Organ_2, particle.duration);

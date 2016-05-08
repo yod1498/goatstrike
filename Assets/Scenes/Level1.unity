@@ -1270,7 +1270,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Touch a white goat to destroy the "maulman"
+  m_Text: Touch the white goat to destroy the maulman
 --- !u!222 &354274692
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2872,7 +2872,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Touch a black goat to destroy the "spearman"
+  m_Text: Touch the black goat to destroy the spearman
 --- !u!222 &913759059
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4016,7 +4016,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Touch a brown goat to destroy the "bowman"
+  m_Text: Touch the brown goat to destroy the bowman
 --- !u!222 &1526450236
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5660,7 +5660,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24332876, guid: 44de6663280f44037b74f1ca50d6b537,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: c313a6c44f3584e52b0f6689635d87b0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: acb9b42a0e3ae4c1ea7e86066f297440, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
