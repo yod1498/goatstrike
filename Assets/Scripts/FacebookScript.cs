@@ -116,16 +116,12 @@ public class FacebookScript : MonoBehaviour {
 		}
 	}
 
-	private void CallFBInviteFriend(){
+	public void CallFBInviteFriend(){
 		#if UNITY_IOS 
-			//FB.Mobile.AppInvite(new Uri("https://fb.me/810530068992919"), callback: this.HandleResult);
-			//FB.Mobile.AppInvite(new Uri("https://fb.me/810530068992919"), new Uri("http://www.imi.co.th/apps/goatstrike/GoatStrikeFB.jpg"), this.HandleResult);
 		FB.Mobile.AppInvite(new Uri(IOS_URL), new Uri(IMAGE_FOR_FB), this.HandleResult);
 		#endif
 
 		#if UNITY_ANDROID
-			//FB.Mobile.AppInvite(new Uri("https://fb.me/892708710750483"), callback: this.HandleResult);
-			//FB.Mobile.AppInvite(new Uri("https://fb.me/892708710750483"), new Uri("http://www.imi.co.th/apps/goatstrike/GoatStrikeFB.jpg"), this.HandleResult);
 		FB.Mobile.AppInvite(new Uri(ANDROID_URL), new Uri(IMAGE_FOR_FB), this.HandleResult);
 		#endif
 	}
