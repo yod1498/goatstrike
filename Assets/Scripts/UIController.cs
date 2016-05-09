@@ -7,6 +7,10 @@ public class UIController : MonoBehaviour {
 	public string levelName = "";
 	public GameObject adsPanel;
 	public GameObject facebookPanel;
+	public GameObject sceneTransitionPanel;
+	public AudioClip clickSFX;
+	private float clickSFXLenth;
+	private static AudioSource audioSource;
 
 	private enum InviteFriendStatus {notyet, shared, cancelled};
 	int userInviteFriendStatus = (int) InviteFriendStatus.notyet;
@@ -19,18 +23,32 @@ public class UIController : MonoBehaviour {
 		}
 		// Assign the userInviteFriendStatus to GoatStrikeInviteFriendStatus 
 		PlayerPrefs.SetInt ("GoatStrikeInviteFriendStatus", userInviteFriendStatus);
+
+		if (sceneTransitionPanel != null){
+			sceneTransitionPanel.SetActive (false);
+		}
+			
+		audioSource = GetComponent<AudioSource> ();
+		if (clickSFX != null)
+			clickSFXLenth = clickSFX.length;
 	}
 
 	public void LoadMenuScene () {
 		BattleController.levelToLoadFromDeath = 0;
 		PlayerPrefs.SetInt ("GoatStrikeInviteFriendStatus", (int) InviteFriendStatus.notyet);
-		SceneManager.LoadScene(levelName);
+
+		PlaySoundEffect (clickSFX);
+		sceneTransitionPanel.SetActive (true);
+		StartCoroutine(loadNewScene(levelName));
 	}
 
 	public void LoadCurrentLevel(){
+		PlaySoundEffect (clickSFX);
+
 		if (Life.DeCreaseLife (1) >= 0) {
 			BattleController.levelToLoadFromDeath = BattleController.CurrentLevel;
-			SceneManager.LoadScene (levelName);
+			sceneTransitionPanel.SetActive (true);
+			StartCoroutine(loadNewScene(levelName));
 		} else {
 			userInviteFriendStatus = PlayerPrefs.GetInt ("GoatStrikeInviteFriendStatus"); 
 
@@ -52,5 +70,15 @@ public class UIController : MonoBehaviour {
 			//adsPanel.SetActive (true);
 			//facebookPanel.SetActive (true);
 		}
+	}
+
+	//load scene after clickSFX end 
+	IEnumerator loadNewScene(string sceneName){
+		yield return new WaitForSeconds(clickSFXLenth);
+		SceneManager.LoadScene(sceneName);
+	}
+
+	void PlaySoundEffect(AudioClip audioClip){
+		audioSource.PlayOneShot (audioClip);
 	}
 }
