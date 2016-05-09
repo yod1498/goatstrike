@@ -26,8 +26,8 @@ public class Score : MonoBehaviour {
 
 
 	void Update () {
-		highScoreTxt.text = "Best: "+highScore;
-		scoreTxt.text = "Score: "+currentScore;
+		highScoreTxt.text = "BEST LV: "+highScore;
+		scoreTxt.text = "LEVEL: "+currentScore;
 
 		if (currentScore > highScore) {
 			highScore = currentScore;
@@ -46,7 +46,8 @@ public class Score : MonoBehaviour {
 	}
 
 	public static void PassLevel (int level){
-		currentScore = currentScore + (level * 10);
+		//currentScore = currentScore + (level * 10);
+		currentScore = level;
 	}
 
 	public static void ResetScore (){

@@ -3259,7 +3259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1436920707
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3323,7 +3323,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Share your new high score on Facebook\n and earn 1 credit?"
+  m_Text: "Share your best level on Facebook\n and earn 1 credit?"
 --- !u!222 &1436920710
 CanvasRenderer:
   m_ObjectHideFlags: 0

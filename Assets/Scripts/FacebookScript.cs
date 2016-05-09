@@ -59,15 +59,15 @@ public class FacebookScript : MonoBehaviour {
 	}
 
 	public void CallFBShare(){
-		string title = "Goat Strike : High Score";
-		string description = "My new high score is " + Score.currentScore + ". Beat me if you can!";
+		string title = "Goat Strike : Best Level";
+		string description = "My best level is " + Score.currentScore + ". Beat me if you can!";
 		Uri photo = new Uri (IMAGE_FOR_FB);
 		FB.ShareLink(new Uri(LINK_FOR_FB),title,description,photo,callback: ShareCallback);
 	}
 
 	public void CallFBShareAchievement(){
 		string title = "Goat Strike : Achievement";
-		string description = "Unlocked level " + BattleController.CurrentLevel + ". Beat me if you can!";
+		string description = "I unlocked level " + BattleController.CurrentLevel + ". Beat me if you can!";
 		Uri photo = new Uri (IMAGE_FOR_FB);
 		FB.ShareLink(new Uri(LINK_FOR_FB),title,description,photo,callback: ShareAchievementCallback);
 	}
