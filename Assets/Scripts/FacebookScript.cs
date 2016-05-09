@@ -8,8 +8,8 @@ public class FacebookScript : MonoBehaviour {
 
 	private const string IMAGE_FOR_FB = "http://www.imi.co.th/apps/goatstrike/GoatStrikeFB.jpg";
 	private const string LINK_FOR_FB =	"http://www.imi.co.th/apps/goatstrike/";
-	private const string IOS_URL = "https://fb.me/810530068992919";
-	private const string ANDROID_URL = "https://fb.me/892708710750483";
+	private const string IOS_URL = "https://play.google.com/store/apps/details?id=th.ac.kmutt.media.mdt.goatstrike";
+	private const string ANDROID_URL = "https://play.google.com/store/apps/details?id=th.ac.kmutt.media.mdt.goatstrike";
 
 	public GameObject facebookPanel;
 	public GameObject faceboookNotReadyPanel;
