@@ -52,22 +52,23 @@ public class UIController : MonoBehaviour {
 		} else {
 			userInviteFriendStatus = PlayerPrefs.GetInt ("GoatStrikeInviteFriendStatus"); 
 
+			//DISABLE FB for now
 			//invite friend first. after that show ads
-			switch (userInviteFriendStatus) {
-			case (int) InviteFriendStatus.notyet:
-				facebookPanel.SetActive (true);
-				break;
-			case (int)InviteFriendStatus.shared:
-				adsPanel.SetActive (true);
-				break;
-			case (int) InviteFriendStatus.cancelled:
-				adsPanel.SetActive (true);
-				break;
-			default:
-				adsPanel.SetActive (true);
-				break;
-			}
-			//adsPanel.SetActive (true);
+//			switch (userInviteFriendStatus) {
+//			case (int) InviteFriendStatus.notyet:
+//				facebookPanel.SetActive (true);
+//				break;
+//			case (int)InviteFriendStatus.shared:
+//				adsPanel.SetActive (true);
+//				break;
+//			case (int) InviteFriendStatus.cancelled:
+//				adsPanel.SetActive (true);
+//				break;
+//			default:
+//				adsPanel.SetActive (true);
+//				break;
+//			}
+			adsPanel.SetActive (true);
 			//facebookPanel.SetActive (true);
 		}
 	}

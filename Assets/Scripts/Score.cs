@@ -48,6 +48,10 @@ public class Score : MonoBehaviour {
 	public static void PassLevel (int level){
 		//currentScore = currentScore + (level * 10);
 		currentScore = level;
+
+		#if UNITY_IOS 
+		LeaderboardManager.ReportScore(currentScore,Leaderboard.leaderBoardID);
+		#endif
 	}
 
 	public static void ResetScore (){

@@ -13,7 +13,7 @@ public class ShareHighScore : MonoBehaviour {
 	//public static bool isReadytoShareAchievement = false;
 
 	// current level that already shared on Facebook 
-	public int currentLevelShared = 0;
+	private int currentLevelShared = 0;
 
 	private int isReadytoShareAchievement = 0; //0=false, 1=true
 
@@ -39,11 +39,12 @@ public class ShareHighScore : MonoBehaviour {
 
 			isReadytoShareAchievement = 0;
 			PlayerPrefs.SetInt ("IsReadytoShareAchievement", isReadytoShareAchievement);
-			facebookShareLevelUpPanel.SetActive (true);
+			//facebookShareLevelUpPanel.SetActive (true);
 		} else {
 			// if not level up and high score, show high score share
 			if ((Score.isNewHighScore) && (BattleController.CurrentLevel > LEVEL_SHARE_HIGH_SCORE)) {
-				facebookSharePanel.SetActive (true);
+				//disable for now
+				//facebookSharePanel.SetActive (true);
 				Score.isNewHighScore = false;
 			}
 		}

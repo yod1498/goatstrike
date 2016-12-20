@@ -8,7 +8,8 @@ public class FacebookScript : MonoBehaviour {
 
 	private const string IMAGE_FOR_FB = "http://www.imi.co.th/apps/goatstrike/GoatStrikeFB.jpg";
 	private const string LINK_FOR_FB =	"http://www.imi.co.th/apps/goatstrike/";
-	private const string IOS_URL = "https://play.google.com/store/apps/details?id=th.ac.kmutt.media.mdt.goatstrike";
+	//private const string LINK_FOR_FB =	"https://play.google.com/store/apps/details?id=th.ac.kmutt.media.mdt.goatstrike";
+	private const string IOS_URL = "https://itunes.apple.com/us/app/goat-strike/id1112188421?ls=1&mt=8";
 	private const string ANDROID_URL = "https://play.google.com/store/apps/details?id=th.ac.kmutt.media.mdt.goatstrike";
 
 	public GameObject facebookPanel;
@@ -67,7 +68,7 @@ public class FacebookScript : MonoBehaviour {
 
 	public void CallFBShareAchievement(){
 		string title = "Goat Strike : Achievement";
-		string description = "I unlocked level " + BattleController.CurrentLevel + ". Beat me if you can!";
+		string description = "Level " + BattleController.CurrentLevel + " is unlocked . Beat me if you can!";
 		Uri photo = new Uri (IMAGE_FOR_FB);
 		FB.ShareLink(new Uri(LINK_FOR_FB),title,description,photo,callback: ShareAchievementCallback);
 	}
